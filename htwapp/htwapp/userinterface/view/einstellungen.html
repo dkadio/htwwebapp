@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
+    <link rel="stylesheet" type="text/css" href="./../css/index.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+    <script src="../js/einstellungen.js"></script>
+    <title>HTWapp</title>
+</head>
+<body>
+    <div data-role="page" id="einstellungen">
+
+        <div data-role="header">
+            <h1>HTWapp - Einstellungen</h1>
+        </div>
+
+        <fieldset data-role="controlgroup" data-type="horizontal">
+            <legend>Studiengang und Semester</legend>
+
+            <label for="studiengang">Studiengang</label>
+            <select name="studiengang" id="studiengang">
+                <option value="ki">Kommunikationsinformatik</option>
+                <option value="pi">Praktische Informatik</option>
+            </select>
+
+            <label for="semester">Semester</label>
+            <select name="semester" id="semester">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </fieldset>
+
+        <div data-role="fieldcontain" id="wahlfach">
+
+        </div>
+
+        <div data-role="footer" data-id="foo1" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="./../index.html" rel="external">Stundenplan</a></li>
+                    <li><a href="./dozenten.html" rel="external">Dozenten</a></li>
+                    <!--  <li><a href="./raeume.html" rel="external">R&auml;ume</a></li> -->
+                    <li><a href="./einstellungen.html" rel="external" class="ui-btn-active ui-state-persist">Einstellungen</a></li>
+                </ul>
+            </div><!-- /navbar -->
+        </div><!-- /footer -->
+        </div>
+</body>
+</html>
