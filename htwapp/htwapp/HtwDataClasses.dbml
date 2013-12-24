@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="htwdata" Class="HtwDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\htwdata.mdf;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="htwdataConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Dozenten" Member="Dozenten">
+    <Type Name="Dozenten">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nachname" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="vorname" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="profiladd" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="mail" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="tele" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="fax" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="sprechstunde" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="profilbildadd" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Association Name="Dozenten_Fach" Member="Fach" ThisKey="Id" OtherKey="verantwortung" Type="Fach" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Fach" Member="Fach">
+    <Type Name="Fach">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="bezeichnung" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="code" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="studiensemster" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ects" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="verantwortung" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="von" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="bis" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="raum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="wahlfach" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="tag" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="modullink" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="beschreibung" Type="System.String" DbType="VarChar(5000)" CanBeNull="true" />
+      <Column Name="studiengang" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Dozenten_Fach" Member="Dozenten" ThisKey="verantwortung" OtherKey="Id" Type="Dozenten" IsForeignKey="true" />
+      <Association Name="Raum_Fach" Member="Raum1" ThisKey="raum" OtherKey="nummer" Type="Raum" IsForeignKey="true" />
+      <Association Name="Studiengaenge_Fach" Member="Studiengaenge" ThisKey="studiengang" OtherKey="Id" Type="Studiengaenge" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Raum" Member="Raum">
+    <Type Name="Raum">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nummer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="vorlesungsraum" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="mitarbeiterraum" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="dozent" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="fach" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Raum_Fach" Member="Fach1" ThisKey="nummer" OtherKey="raum" Type="Fach" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Studiengaenge" Member="Studiengaenge">
+    <Type Name="Studiengaenge">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="bezeichnung" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Studiengaenge_Fach" Member="Fach" ThisKey="Id" OtherKey="studiengang" Type="Fach" />
+    </Type>
+  </Table>
+</Database>

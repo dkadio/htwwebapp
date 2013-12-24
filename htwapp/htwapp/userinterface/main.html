@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+    <script src="js/stundenplan.js"></script>
+    <title>HTWapp</title>
+</head>
+<body>
+    <div data-role="page" id="stundenplan">
+        <div data-role="header">
+            <h1>HTWapp</h1>
+        </div>
+        <div data-role="collapsible-set">
+            <div data-role="collapsible" id="montag" class="">
+                <h3>Montag</h3>
+                <ul data-role="listview" data-theme="d" data-divider-theme="d" id="montagContent"></ul>
+            </div>
+            <div data-role="collapsible" id="dienstag">
+                <h3>Dienstag</h3>
+                <ul data-role="listview" data-theme="d" data-divider-theme="d" id="dienstagContent"></ul>
+            </div>
+            <div data-role="collapsible" id="mittwoch">
+                <h3>Mittwoch</h3>
+                <ul data-role="listview" data-theme="d" data-divider-theme="d" id="mittwochContent"></ul>
+            </div>
+            <div data-role="collapsible" id="donnerstag">
+                <h3>Donnerstag</h3>
+                <ul data-role="listview" data-theme="d" data-divider-theme="d" id="donnerstagContent"></ul>
+            </div>
+            <div data-role="collapsible" id="freitag">
+                <h3>Freitag</h3>
+                <ul data-role="listview" data-theme="d" data-divider-theme="d" id="freitagContent"></ul>
+
+
+            </div>
+            <div data-role="collapsible" id="samstag">
+                <h3>Samstag</h3>
+
+                <ul data-role="listview" data-theme="d" data-divider-theme="d" id="samstagContent"></ul>
+            </div>
+        </div>
+        <div data-role="footer" data-id="foo1" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="index.html" rel="external" class="ui-btn-active ui-state-persist">Stundenplan</a></li>
+                    <li><a href="./view/dozenten.html" rel="external">Dozenten</a></li>
+                    <!--<li><a href="./view/raeume.html" rel="external">R&auml;ume</a></li>-->
+                    <li><a href="./view/einstellungen.html" rel="external">Einstellungen</a></li>
+                </ul>
+            </div><!-- /navbar -->
+        </div><!-- /footer -->
+        </div>
+
+    <div data-role="page" id="viewfach">
+        <div data-role="header">
+            <h1>HTWapp</h1>
+        </div>
+
+
+        <div id="viewfachcontent">
+        </div>
+
+        <div data-role="footer" data-id="foo1" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="index.html" rel="external" class="ui-btn-active ui-state-persist">Stundenplan</a></li>
+                    <li><a href="./view/dozenten.html" rel="external">Dozenten</a></li>
+                    <!--<li><a href="./view/raeume.html" rel="external">R&auml;ume</a></li>-->
+                    <li><a href="./view/einstellungen.html" rel="external">Einstellungen</a></li>
+                </ul>
+            </div><!-- /navbar -->
+        </div><!-- /footer -->
+    </div>
+        </div>
+</body>
+            </html>
