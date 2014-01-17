@@ -59,7 +59,7 @@ namespace htwapp
 
             HtwDataClassesDataContext db = new HtwDataClassesDataContext();
             var dozenten = from f in db.Dozenten
-                           orderby f.nachname ascending
+                           orderby f.vorname ascending
                            select f;
 
 
@@ -202,7 +202,7 @@ namespace htwapp
             {
                 //inhalt bereitstellen
 
-                context.Response.Write("<input type=\"checkbox\" name=\"" + wahlfach.Id + "\" id=\"" + wahlfach.Id + "\" class=\"custom\" />");
+                context.Response.Write("<input type=\"checkbox\" name=\"" + wahlfach.Id + "\" id=\"" + wahlfach.Id + "\" class=\"custom checkbox\" >");
                 context.Response.Write("<label for=\"" + wahlfach.Id + "\">" + wahlfach.bezeichnung + "</label>");
 
             }

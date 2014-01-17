@@ -1,7 +1,8 @@
-﻿$(document).ready(function () {
+﻿//man koennte die studiengaenge und den andern scheiss noch dynamisch machen
+
+$(document).ready(function () {
     //studiengang und semster vorbelegen
     setValues();
-
 
     $('#studiengang').bind('change', function () {
         var $this = $(this),
@@ -26,7 +27,34 @@ function setLS() {
         .load(loadUrl, null, function (responseText) {
             $("#wahlfach").html(responseText);
             //TODO wahlfächer refreshen.
+            
             $("#wahlfach").page();
+            //set old values
+
+
+            $(".checkbox").change(function () {
+                //speicher die wahlfächer im localstorage
+              //  localStorage.removeItem("wahlfaecher");
+                alert($(this).is(":checked"));
+
+                if (localStorage.getItem("wahlfaecher") == null) {
+                    //wahlfaecher exisiterit nicht -> leg es an
+                    localStorage.setItem("wahlfaecher", "");
+                    
+                } else {
+                    if ($(this).is(":checked")) {
+                        //hinzufuegen in localstorage
+                        localStorage.setItem("wahlfaecher", localStorage.getItem("wahlfaecher") + "." + $(this).attr("id"));
+                        alert(localStorage.getItem("wahlfaecher"));
+                        alert($(this).attr("id"));
+                    } else {
+                        //entfernen aus localstorage
+                        // suche in wahlfaecher nach substring "." + id
+                    }
+                }
+                
+
+            });
         });
 }
 
@@ -45,6 +73,7 @@ function setValues() {
     se.selectmenu("refresh", true);
     sg.selectmenu("refresh", true);
 }
+
 
 
 
