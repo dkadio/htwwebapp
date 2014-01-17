@@ -28,30 +28,40 @@ function setLS() {
             $("#wahlfach").html(responseText);
             //TODO wahlfächer refreshen.
             
-            $("#wahlfach").page();
             //set old values
+            if (localStorage.getItem("wahlfaecher") == null) {
+                //mach nix
+            } else {
+                //check welche wahlfaecher bereits gewaehlt waren und setz sie auf gecheckt
+                var felder = localStorage.getItem("wahlfaecher").split(".");
+                for (var i = 1; i < felder.length; i++) {
+                    //nimm die id der checkbox und setz sie auf true wenn sie im array vorhanden ist
+                    $("#" + felder[i]).prop("checked", true);
+                }
+            }
+            //zum neu laden der jquerystyles
+            $("#wahlfach").page();
 
 
             $(".checkbox").change(function () {
                 //speicher die wahlfächer im localstorage
               //  localStorage.removeItem("wahlfaecher");
-                alert($(this).is(":checked"));
 
                 if (localStorage.getItem("wahlfaecher") == null) {
                     //wahlfaecher exisiterit nicht -> leg es an
                     localStorage.setItem("wahlfaecher", "");
-                    
-                } else {
+                } 
+                    //wahlfaecher existiert schreib rein
                     if ($(this).is(":checked")) {
                         //hinzufuegen in localstorage
                         localStorage.setItem("wahlfaecher", localStorage.getItem("wahlfaecher") + "." + $(this).attr("id"));
-                        alert(localStorage.getItem("wahlfaecher"));
-                        alert($(this).attr("id"));
+                      
                     } else {
                         //entfernen aus localstorage
-                        // suche in wahlfaecher nach substring "." + id
+                        localStorage.setItem("wahlfaecher", localStorage.getItem("wahlfaecher").replace("." + $(this).attr("id"),""));
+
                     }
-                }
+                
                 
 
             });
