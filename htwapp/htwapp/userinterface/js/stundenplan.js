@@ -24,7 +24,6 @@ function getfach(element) {
                 case ("montag"):
                    
                     $("#montagContent").load(loadUrl, null, function (responseText) {
-                        alert(localStorage.getItem("wahlfaecher"));
                         $("#montagContent").html(responseText);
                         $("ul").listview("refresh");
                     });
