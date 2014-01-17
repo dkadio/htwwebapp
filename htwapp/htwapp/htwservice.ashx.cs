@@ -74,18 +74,40 @@ namespace htwapp
 
         public void getfach(HttpContext context)
         {
+            context.Response.ContentType = "text/plain";
+
+
             String studiengang = context.Request.QueryString["studiengang"];
             String semester = context.Request.QueryString["semester"];
-
+            String wahlfaecher = context.Request.QueryString["wahlfaecher"];
             String tag = context.Request.QueryString["tag"];
-            context.Response.ContentType = "text/plain";
+            String[] wahlfachliste = null;
+
+            //split wahlfacher into Array
+            if (!String.IsNullOrEmpty(wahlfaecher))
+            {
+                wahlfachliste = wahlfaecher.Split('.');
+                for (int i = 0; i < wahlfachliste.Length; i++)
+                {
+
+                    if(wahlfachliste[i].Equals(",")){
+                        wahlfachliste[i] = "-1";
+                    }
+                }
+
+            }
+            
+
+
             HtwDataClassesDataContext db = new HtwDataClassesDataContext();
             var fach = from f in db.Fach
                        where f.tag.Equals(tag) && f.studiensemster == Convert.ToInt32(semester) && f.Studiengaenge.bezeichnung.Equals(studiengang)
                        orderby f.von ascending
                        select f;
 
+   
 
+            
             foreach (var x in fach)
             {
 
@@ -95,12 +117,22 @@ namespace htwapp
                 {
                     context.Response.Write("<li><a " + "id=\"" + x.Id + "\"" + "class=\"fachview\" href=\"" + "#viewfach" + "\" onClick=\"getfachview(" + x.Id + ")\"> <h2>" + x.bezeichnung + "</h2><p>" + "von: " + x.von + " bis: " + x.bis + "</p></a></li>");
                 }
-                else
+               else
                 {
                     //wenns ein wahlfach ist dann schau nach ob man das dazu schreiben soll. --> query
+                    if (wahlfachliste != null) { 
+                    for (int i = 0; i < wahlfachliste.Length; i++)
+                    {
+                        if (wahlfachliste[i].Equals(Convert.ToString(x.Id)))
+                        {
+                            context.Response.Write("<li><a " + "id=\"" + x.Id + "\"" + "class=\"fachview\" href=\"" + "#viewfach" + "\" onClick=\"getfachview(" + x.Id + ")\"> <h2>" + x.bezeichnung + "</h2><p>" + "von: " + x.von + " bis: " + x.bis + "</p></a></li>");
+
+                        }
+                    }
+                   }
                 }
 
-            }
+            } 
 
 
 

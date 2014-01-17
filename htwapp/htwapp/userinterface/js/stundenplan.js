@@ -17,13 +17,14 @@ function getfach(element) {
 
         } else {
 
-            var loadUrl = "http://localhost:52142/htwservice.ashx?function=" + "getfach" + "&tag=" + element.attr("id") + "&studiengang=" + localStorage.getItem("studiengang") + "&semester=" + localStorage.getItem("semester");
+            var loadUrl = "http://localhost:52142/htwservice.ashx?function=" + "getfach" + "&tag=" + element.attr("id") + "&studiengang=" + localStorage.getItem("studiengang") + "&semester=" + localStorage.getItem("semester") + "&wahlfaecher=" + localStorage.getItem("wahlfaecher");
  
            
             switch (element.attr("id")) {
                 case ("montag"):
                    
                     $("#montagContent").load(loadUrl, null, function (responseText) {
+                        alert(localStorage.getItem("wahlfaecher"));
                         $("#montagContent").html(responseText);
                         $("ul").listview("refresh");
                     });
