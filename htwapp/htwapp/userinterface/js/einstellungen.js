@@ -1,14 +1,16 @@
-﻿//man koennte die studiengaenge und den andern scheiss noch dynamisch machen
+//man koennte die studiengaenge noch dynamisch machen
 
 $(document).ready(function () {
     //studiengang und semster vorbelegen
     setValues();
 
+    //bei anwahl der studiengaaenge muss der localstorage neu geschrieben werden
     $('#studiengang').bind('change', function () {
         var $this = $(this),
             val = $this.val();
         localStorage.setItem("studiengang", val);
     });
+    // das selbe gilt fuer das semster
     $('#semester').bind('change', function () {
         var $this = $(this),
             val = $this.val();
@@ -19,6 +21,7 @@ $(document).ready(function () {
     setLS();
 });
 
+//verfuergbare wahlfaecher anzeigen lassen
 function setLS() {
     
     var loadUrl = "http://localhost:52142/htwservice.ashx?function=" + "wahlfaecher" + "";
